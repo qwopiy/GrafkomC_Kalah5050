@@ -1,21 +1,36 @@
-using UnityEditor.PackageManager;
+﻿using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class BulletMov : MonoBehaviour
 {
-    Vector2 moveDir;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public GameObject summonsPrefab;
+    public float speed = 5f;          // kecepatan konstan
+    public float maxDistance = 10f;   // jarak maksimum
+    private Vector3 startPos;         // posisi awal bullet
+    public Vector2 direction = Vector2.up; 
+
     void Start()
     {
-       
+        startPos = transform.position; // simpan posisi awal saat bullet dibuat
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        moveDir.x += 0.01f;
-        transform.position += new Vector3(moveDir.x * Time.deltaTime, 0f, 0f);
+        // Gerakkan bullet ke kanan
+        transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+
+        // Hitung jarak yang sudah ditempuh
+        float distance = Vector3.Distance(startPos, transform.position);
+
+        // Jika jarak sudah melebihi maxDistance → hapus bullet
+        if (distance >= maxDistance)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Shoot(Vector2 _direction)
+    {
+        direction = _direction;
     }
 }

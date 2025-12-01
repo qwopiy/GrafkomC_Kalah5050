@@ -23,4 +23,5 @@ public class SummonBullet : MonoBehaviour
             yield return new WaitForSeconds(interval); // jeda sebelum spawn berikutnya
         }
     }
+    //perubahan entahlah
 }
