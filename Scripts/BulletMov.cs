@@ -29,7 +29,7 @@ public class BulletMov : MonoBehaviour
         }
     }
 
-    void Shoot(Vector2 _direction)
+    public void Shoot(Vector2 _direction)
     {
         direction = _direction;
     }

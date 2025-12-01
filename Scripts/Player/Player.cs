@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     PlayerInput pInput;
 
@@ -19,6 +19,9 @@ public class PlayerMovement : MonoBehaviour
     readonly float offset = -90f;
     float zAngle;
     Vector2 lastNonZeroDir = Vector2.right;
+
+    // Untuk Shooting
+    public GameObject bullet;
 
     private void Awake()
     {
@@ -131,6 +134,15 @@ public class PlayerMovement : MonoBehaviour
         {
             moveDirNormalized.x = x;
             moveDirNormalized.y = y;
+        }
+    }
+
+    public void ShootBullet(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            bullet.GetComponent<BulletMov>().Shoot(lastNonZeroDir);
+            Instantiate(bullet, transform.position, Quaternion.identity);
         }
     }
 }
