@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 1103852241}
   - component: {fileID: 1103852240}
   - component: {fileID: 1103852242}
+  - component: {fileID: 1103852244}
   - component: {fileID: 1103852243}
   - component: {fileID: 1103852239}
   m_Layer: 0
@@ -449,6 +450,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 14d95d31-9f1a-44f6-9eb5-f3c7599a6b80
     m_ActionName: 'Player/D[/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1103852244}
+        m_TargetAssemblyTypeName: PlayerShoot, Assembly-CSharp
+        m_MethodName: ShootBullet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a39e418a-1d66-43d0-8d82-d996750de8d9
+    m_ActionName: 'Player/E[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -554,6 +571,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestSpawn
   objToSpawn: {fileID: 8251460522658335475, guid: 0734003a830fff64d8b2e054466ea42e, type: 3}
+--- !u!114 &1103852244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103852238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc49e018124360e4380a2de9fc8d1dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
+  bullet: {fileID: 8251460522658335475, guid: 0734003a830fff64d8b2e054466ea42e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
