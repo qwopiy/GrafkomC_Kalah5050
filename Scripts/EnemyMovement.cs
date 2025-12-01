@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
         float distanceToPlayer = (float)Math.Abs(Math.Sqrt(Math.Pow(directionX, 2) + Math.Pow(directionY, 2)));
 
-        if (distanceToPlayer > 1.5f)
+        if (distanceToPlayer > 0f)
         {
             transform.position = currentPosition + (direction * movSpeed * Time.deltaTime);
         }
