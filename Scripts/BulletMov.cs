@@ -17,7 +17,13 @@ public class BulletMov : MonoBehaviour
     {
 
         // Gerakkan bullet ke kanan
-        transform.position += new Vector3(direction.x, direction.y) * speed * Time.deltaTime;
+        transform.position += speed * Time.deltaTime * new Vector3(direction.x, direction.y);
+
+        // Rotasi bullet sesuai arah gerak
+        float zAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float offset = -90f;
+
+        transform.rotation = Quaternion.Euler(0, 0, zAngle + offset);
 
         // Hitung jarak yang sudah ditempuh
         float distance = Vector3.Distance(startPos, transform.position);

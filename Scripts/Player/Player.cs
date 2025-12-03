@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     Vector2 moveDirNormalized;
 
     // Untuk Rotasi
-    [SerializeField]
-    float rotationSpeed = 100f;
     readonly float offset = -90f;
     float zAngle;
     Vector2 lastNonZeroDir = Vector2.right;
@@ -51,6 +49,8 @@ public class Player : MonoBehaviour
         Rotate();
     }
 
+    // Translasi
+    // P' = P + T
     void Move()
     {
         NormalizeDirection(moveDir.x, moveDir.y);
@@ -60,10 +60,10 @@ public class Player : MonoBehaviour
             lastNonZeroDir = moveDirNormalized;
         }
 
-        Vector3 newPosition = transform.position;
-        newPosition.x += moveDirNormalized.x * movSpeed * Time.deltaTime;
-        newPosition.y += moveDirNormalized.y * movSpeed * Time.deltaTime;
-        transform.position = newPosition;
+        Vector3 translation = Vector3.zero;
+        translation.x = moveDirNormalized.x * movSpeed * Time.deltaTime;
+        translation.y = moveDirNormalized.y * movSpeed * Time.deltaTime;
+        transform.position += translation;
     }
 
     void Rotate()
