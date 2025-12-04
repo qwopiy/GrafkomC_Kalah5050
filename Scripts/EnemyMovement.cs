@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (distanceToPlayer > 0f)
         {
-            transform.position = currentPosition + (direction * movSpeed * Time.deltaTime);
+            transform.position = currentPosition + (movSpeed * Time.deltaTime * direction);
         }
 
     }

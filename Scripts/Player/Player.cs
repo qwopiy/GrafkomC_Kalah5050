@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,13 @@ using UnityEngine.UIElements;
 public class Player : MonoBehaviour
 {
     PlayerInput pInput;
+    Collider2D col;
+
+    // Player Stats
+    public int health = 100;
+    public int damage = 100;
+    float iFrameWindow = 0.2f;
+    bool inIFrame = false;
 
     // Untuk Translasi
     [SerializeField]
@@ -24,6 +32,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         pInput = new PlayerInput();
+        col = GetComponent<Collider2D>();
     }
 
     private void OnEnable()
@@ -143,6 +152,35 @@ public class Player : MonoBehaviour
         {
             bullet.GetComponent<BulletMov>().Shoot(lastNonZeroDir);
             Instantiate(bullet, transform.position, Quaternion.identity);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            GetHit(10);
+            Debug.Log("Player Health: " + health);
+        }
+    }
+
+    private IEnumerator IFrame()
+    {
+        if (!inIFrame)
+        {
+            inIFrame = true;
+            yield return new WaitForSeconds(iFrameWindow);
+            inIFrame = false;
+        }
+    }
+
+    private void GetHit(int damage)
+    {
+        if (!inIFrame)
+        {
+            health -= damage;
+            Debug.Log("Player Health: " + health);
+            StartCoroutine(IFrame());
         }
     }
 }

@@ -39,4 +39,18 @@ public class BulletMov : MonoBehaviour
     {
         direction = _direction;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(50); // contoh damage
+            }
+            Destroy(gameObject); // hancurkan bullet setelah mengenai musuh
+        }
+    }
+
 }

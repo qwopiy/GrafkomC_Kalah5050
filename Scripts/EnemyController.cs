@@ -33,27 +33,27 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             enemyMovement.enabled = true;
-            StartCoroutine(delayAfterCollide());
+            StartCoroutine(DelayAfterCollide());
         }
     }
 
-    public  void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         health -= amount;
-        StartCoroutine(getHit());
+        StartCoroutine(GetHit());
         if (health <= 0)
         {
             Destroy(gameObject);
         }
     }
 
-    IEnumerator delayAfterCollide()
+    IEnumerator DelayAfterCollide()
     {
         enemyMovement.movSpeed = (float)(enemyMovement.movSpeed * 0.2);
         yield return new WaitForSeconds(0.5f);
         enemyMovement.movSpeed = (float)(enemyMovement.movSpeed * 10/2);
     }
-    IEnumerator getHit()
+    IEnumerator GetHit()
     {
         spriteRenderer.color = Color.white;
         yield return new WaitForSeconds(0.1f);
