@@ -11,6 +11,13 @@ public class EnemySpawner : MonoBehaviour
     public float spawnRadius = 15f;
 
     private float timer;
+    GameObject player;
+
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        timer = 0f;
+    }
 
     void Update()
     {
@@ -31,7 +38,8 @@ public class EnemySpawner : MonoBehaviour
         int randIndex = Random.Range(0, enemyPrefabs.Length);
 
         // posisi spawn acak di luar pemain dengan radius melingkar
-        Vector2 randomPos = Random.insideUnitCircle.normalized * spawnRadius;
+        Vector2 playerPos = player.transform.position;
+        Vector2 randomPos = playerPos + (Random.insideUnitCircle.normalized * spawnRadius);
         Vector3 spawnPos = new Vector3(randomPos.x, randomPos.y, 0);
 
         Instantiate(enemyPrefabs[randIndex], spawnPos, Quaternion.identity);
