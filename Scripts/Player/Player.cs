@@ -10,8 +10,8 @@ public class Player : MonoBehaviour
     Collider2D col;
 
     // Player Stats
-    public int health = 100;
-    public int damage = 100;
+    public static int health = 100;
+    public static int damage = 10;
     float iFrameWindow = 0.2f;
     bool inIFrame = false;
 
@@ -181,6 +181,11 @@ public class Player : MonoBehaviour
             health -= damage;
             Debug.Log("Player Health: " + health);
             StartCoroutine(IFrame());
+            if (health <= 0)
+            {
+                Debug.Log("Player Died");
+                Destroy(gameObject);
+            }
         }
     }
 }
