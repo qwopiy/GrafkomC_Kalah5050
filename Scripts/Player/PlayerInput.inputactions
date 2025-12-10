@@ -43,7 +43,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "E",
+                    "name": "Shoot",
                     "type": "Button",
                     "id": "a39e418a-1d66-43d0-8d82-d996750de8d9",
                     "expectedControlType": "",
@@ -100,11 +100,11 @@
                 {
                     "name": "",
                     "id": "186bf68e-0181-4fcd-9e66-c78ada177685",
-                    "path": "<Keyboard>/e",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "E",
+                    "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
