@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
 
     // Player Stats
     public static int health = 100;
-    public static int damage = 10;
     float iFrameWindow = 0.2f;
     bool inIFrame = false;
 
@@ -195,7 +194,7 @@ public class Player : MonoBehaviour
         {
             // offset supaya bullet muncul di depan gun
             Vector2 bulletStartPos = new Vector2(transform.position.x + ((offsetAmount + 1.1f) * lastNonZeroDir.x), transform.position.y + ((offsetAmount + 1.2f) * lastNonZeroDir.y));
-            bullet.GetComponent<BulletMov>().Shoot(lastNonZeroDir);
+            bullet.GetComponent<Bullet>().Shoot(lastNonZeroDir);
             Instantiate(bullet, bulletStartPos, Quaternion.identity);
         }
     }

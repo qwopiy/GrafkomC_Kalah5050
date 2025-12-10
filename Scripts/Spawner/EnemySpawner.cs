@@ -24,9 +24,12 @@ public class EnemySpawner : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= spawnInterval)
         {
+            timer -= spawnInterval;
+            if (GameStateManager.HasReachedEnemyCap()) return;
             SpawnEnemy();
-            timer = 0f;
-            spawnInterval *= difficultyRate;
+            if (spawnInterval > 0.5f) {
+                spawnInterval *= difficultyRate; 
+            }
         }
     }
 
@@ -43,5 +46,6 @@ public class EnemySpawner : MonoBehaviour
         Vector3 spawnPos = new Vector3(randomPos.x, randomPos.y, 0);
 
         Instantiate(enemyPrefabs[randIndex], spawnPos, Quaternion.identity);
+        GameStateManager.IncreaseEnemyCounter();
     }
 }
