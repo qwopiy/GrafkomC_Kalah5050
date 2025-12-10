@@ -47,7 +47,8 @@ public class BulletMov : MonoBehaviour
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             if (enemy != null)
             {
-                enemy.TakeDamage(50); // contoh damage
+                enemy.TakeDamage(Player.damage); // contoh damage
+                GameStateManager.AddScore(Player.damage); // tambah skor saat mengenai musuh
             }
             Destroy(gameObject); // hancurkan bullet setelah mengenai musuh
         }

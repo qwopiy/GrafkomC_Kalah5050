@@ -43,6 +43,7 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(GetHit());
         if (health <= 0)
         {
+            GameStateManager.AddKill();
             Destroy(gameObject);
         }
     }
