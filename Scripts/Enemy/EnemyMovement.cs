@@ -4,14 +4,15 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public float movSpeed;
-
+    SpriteRenderer sr;
     Transform player;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    
+
     void Update()
     {
         Vector2 currentPosition = transform.position;
@@ -27,5 +28,13 @@ public class EnemyMovement : MonoBehaviour
             transform.position = currentPosition + (movSpeed * Time.deltaTime * direction);
         }
 
+        if (directionX < 0)
+        {
+            sr.flipX = true;
+        }
+        else
+        {
+            sr.flipX = false;
+        }
     }
 }

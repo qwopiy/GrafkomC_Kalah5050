@@ -56,8 +56,8 @@ public class EnemyController : MonoBehaviour
     }
     IEnumerator GetHit()
     {
-        spriteRenderer.color = Color.white;
-        yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 }
