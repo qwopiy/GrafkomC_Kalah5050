@@ -7,7 +7,8 @@ public class Bullet : MonoBehaviour
     public float speed = 5f;          // kecepatan konstan
     public float maxDistance = 10f;   // jarak maksimum
     private Vector3 startPos;         // posisi awal bullet
-    public Vector2 direction = Vector2.up; 
+    public Vector2 direction = Vector2.up;
+    public GameObject explosionPrefab;
 
     void Start()
     {
@@ -55,4 +56,11 @@ public class Bullet : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+    }
 }
