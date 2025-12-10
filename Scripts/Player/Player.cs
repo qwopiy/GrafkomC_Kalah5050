@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     PlayerInput pInput;
     Collider2D col;
     public GameObject gun;
+    Animator animator;
 
     // Player Stats
     public static int health = 100;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     float movSpeed = 5f;
     Vector2 moveDir;
     Vector2 moveDirNormalized;
+    bool isWalking = false;
 
     // Untuk Rotasi
     float zAngle;
@@ -34,6 +36,7 @@ public class Player : MonoBehaviour
     {
         pInput = new PlayerInput();
         col = GetComponent<Collider2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -74,6 +77,24 @@ public class Player : MonoBehaviour
         translation.x = moveDirNormalized.x * movSpeed * Time.deltaTime;
         translation.y = moveDirNormalized.y * movSpeed * Time.deltaTime;
         transform.position += translation;
+
+        // Animasi jalan
+        if (moveDirNormalized.sqrMagnitude > 0.001f)
+        {
+            isWalking = true;
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            isWalking = false;
+            animator.SetBool("isWalking", false);
+        }
+
+        if (isWalking)
+        {
+            animator.SetFloat("moveX", moveDirNormalized.x);
+            animator.SetFloat("moveY", moveDirNormalized.y);
+        }
     }
 
     void Rotate()
