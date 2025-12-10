@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     PlayerInput pInput;
     Collider2D col;
+    public GameObject gun;
 
     // Player Stats
     public static int health = 100;
@@ -22,9 +23,9 @@ public class Player : MonoBehaviour
     Vector2 moveDirNormalized;
 
     // Untuk Rotasi
-    readonly float offset = -90f;
     float zAngle;
     Vector2 lastNonZeroDir = Vector2.right;
+    float offsetAmount = 0.7f; // untuk tembak
 
     // Untuk Shooting
     public GameObject bullet;
@@ -62,7 +63,7 @@ public class Player : MonoBehaviour
     // P' = P + T
     void Move()
     {
-        NormalizeDirection(moveDir.x, moveDir.y);
+       moveDirNormalized = NormalizeDirection(moveDir.x, moveDir.y);
 
         if (moveDirNormalized.sqrMagnitude > 0.001f)
         {
@@ -80,7 +81,21 @@ public class Player : MonoBehaviour
         // Rumus rotasi penting
         zAngle = Mathf.Atan2(lastNonZeroDir.y, lastNonZeroDir.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0, 0, zAngle + offset);
+        gun.transform.rotation = Quaternion.Euler(0, 0, zAngle);
+
+        // Offset gun
+        Vector2 offset = (offsetAmount * lastNonZeroDir);
+        gun.transform.position = new Vector2(transform.position.x + offset.x, transform.position.y + offset.y);
+
+        // flip gun kalo hadap kiri
+        if (lastNonZeroDir.x < 0)
+        {
+            gun.GetComponent<SpriteRenderer>().flipY = true;
+        }
+        else
+        {
+            gun.GetComponent<SpriteRenderer>().flipY = false;
+        }
     }
 
     public void CalculateUp(InputAction.CallbackContext context)
@@ -131,27 +146,36 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Rumus translasi penting
-    void NormalizeDirection(float x, float y)
+    // Rumus normalisasi
+    Vector2 NormalizeDirection(float x, float y)
     {
+        Vector2 normalDir;
         if (x != 0 && y != 0)
         {
-            moveDirNormalized.x = x * Mathf.Sqrt(2) / 2;
-            moveDirNormalized.y = y * Mathf.Sqrt(2) / 2;
+            normalDir.x = x * Mathf.Sqrt(2) / 2;
+            normalDir.y = y * Mathf.Sqrt(2) / 2;
         }
         else
         {
-            moveDirNormalized.x = x;
-            moveDirNormalized.y = y;
+            normalDir.x = x;
+            normalDir.y = y;
         }
+        return normalDir;
+    }
+
+    Vector2 NormalizeDirection(Vector2 dir)
+    {
+        return NormalizeDirection(dir.x, dir.y);
     }
 
     public void ShootBullet(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
+            // offset supaya bullet muncul di depan gun
+            Vector2 bulletStartPos = new Vector2(transform.position.x + ((offsetAmount + 1.1f) * lastNonZeroDir.x), transform.position.y + ((offsetAmount + 1.2f) * lastNonZeroDir.y));
             bullet.GetComponent<BulletMov>().Shoot(lastNonZeroDir);
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(bullet, bulletStartPos, Quaternion.identity);
         }
     }
 
