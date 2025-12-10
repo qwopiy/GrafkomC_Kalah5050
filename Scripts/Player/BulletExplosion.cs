@@ -23,6 +23,9 @@ public class BulletExplosion : MonoBehaviour
         }
     }
 
+    // Rumus Skalasi
+    // P' = P * S
+    // (x',y',z') = (x * S, y * S, z * S)
     void UpdateScale()
     {
         transform.localScale = Vector3.one * currentScale;

@@ -1,4 +1,5 @@
-﻿using UnityEditor.PackageManager;
+﻿using System;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -17,7 +18,6 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-
         // Gerakkan bullet ke kanan
         transform.position += speed * Time.deltaTime * new Vector3(direction.x, direction.y);
 
@@ -28,7 +28,9 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, zAngle + offset);
 
         // Hitung jarak yang sudah ditempuh
-        float distance = Vector3.Distance(startPos, transform.position);
+        float directionX = startPos.x - transform.position.x;
+        float directionY = startPos.y - transform.position.y;
+        float distance = (float)Math.Abs(Math.Sqrt(Math.Pow(directionX, 2) + Math.Pow(directionY, 2)));
 
         // Jika jarak sudah melebihi maxDistance → hapus bullet
         if (distance >= maxDistance)
