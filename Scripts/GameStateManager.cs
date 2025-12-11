@@ -15,7 +15,7 @@ public class GameStateManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            initState();
+            InitState();
         }
     }
 
@@ -27,7 +27,7 @@ public class GameStateManager : MonoBehaviour
     public static int maxEnemies = 100;
 
 
-    private void initState()
+    public static void InitState()
     {
         score = 0;
         kills = 0;

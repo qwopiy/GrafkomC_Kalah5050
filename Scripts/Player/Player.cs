@@ -51,7 +51,8 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        health = 100;
+        GameStateManager.InitState();
     }
 
     // Update is called once per frame
@@ -228,7 +229,8 @@ public class Player : MonoBehaviour
             if (health <= 0)
             {
                 Debug.Log("Player Died");
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                GameStateManager.GoToMenu();
             }
         }
     }
