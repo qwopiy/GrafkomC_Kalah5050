@@ -49,7 +49,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
-            if (enemy != null)
+            if (enemy != null && !enemy.isDying)
             {
                 enemy.TakeDamage(damage); // contoh damage
                 GameStateManager.AddScore(damage); // tambah skor saat mengenai musuh

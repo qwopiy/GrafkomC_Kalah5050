@@ -14,7 +14,7 @@ public class BulletExplosion : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(currentScale);
+        //Debug.Log(currentScale);
         currentScale += explosionSpeed * Time.deltaTime;
         UpdateScale();
         if (currentScale >= explosionScale)

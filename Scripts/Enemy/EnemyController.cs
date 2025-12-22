@@ -8,11 +8,15 @@ public class EnemyController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public EnemyMovement enemyMovement;
     public Rigidbody2D rb;
+    public Animator animator;
+
+    public bool isDying = false;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyMovement = GetComponent<EnemyMovement>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -43,8 +47,10 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(GetHit());
         if (health <= 0)
         {
+            enemyMovement.enabled = false;
             GameStateManager.AddKill();
-            Destroy(gameObject);
+            animator.SetTrigger("Die");
+            StartCoroutine(DieDelay());
         }
     }
 
@@ -59,5 +65,11 @@ public class EnemyController : MonoBehaviour
         spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         spriteRenderer.color = Color.white;
+    }
+    IEnumerator DieDelay()
+    {
+        isDying = true;
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }
