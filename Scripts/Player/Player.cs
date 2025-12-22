@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     Collider2D col;
     public GameObject gun;
     Animator animator;
+    SpriteRenderer sr;
+    AudioComponent ac;
 
     // Player Stats
     public static int health = 100;
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour
         pInput = new PlayerInput();
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
+        ac = GetComponent<AudioComponent>();
     }
 
     private void OnEnable()
@@ -167,7 +171,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Rumus normalisasi
+    public void StopGame(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameStateManager.SetHighScore();
+            GameStateManager.GoToMenu();
+        }
+    }
+
+        // Rumus normalisasi
     Vector2 NormalizeDirection(float x, float y)
     {
         Vector2 normalDir;
@@ -214,7 +227,9 @@ public class Player : MonoBehaviour
         if (!inIFrame)
         {
             inIFrame = true;
+            sr.color = Color.red;
             yield return new WaitForSeconds(iFrameWindow);
+            sr.color = Color.white;
             inIFrame = false;
         }
     }
@@ -223,6 +238,7 @@ public class Player : MonoBehaviour
     {
         if (!inIFrame)
         {
+            ac.AudioPlayOnce();
             health -= damage;
             Debug.Log("Player Health: " + health);
             StartCoroutine(IFrame());

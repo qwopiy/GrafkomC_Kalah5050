@@ -103,6 +103,8 @@ GameObject:
   - component: {fileID: 1976358736316030442}
   - component: {fileID: 8269602078839200029}
   - component: {fileID: 4539828955166900039}
+  - component: {fileID: 5919610951510940699}
+  - component: {fileID: 7448970670979905752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -304,6 +306,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a39e418a-1d66-43d0-8d82-d996750de8d9
     m_ActionName: 'Player/E[/Keyboard/e]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e07c157b-cbd8-40a9-80f9-46f22031d4a8
+    m_ActionName: 'Player/StopGame[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -346,3 +352,52 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.21133338}
   m_Size: {x: 1.0000002, y: 1.0000002}
   m_Direction: 0
+--- !u!95 &5919610951510940699
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788564977219249284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c39f5caf045ad840936f0f8f2946af1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &7448970670979905752
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2788564977219249284}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

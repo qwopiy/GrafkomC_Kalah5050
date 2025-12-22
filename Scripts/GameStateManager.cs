@@ -31,6 +31,7 @@ public class GameStateManager : MonoBehaviour
 
     public static void InitState()
     {
+        enemyCounter = 0;
         score = 0;
         kills = 0;
     }
