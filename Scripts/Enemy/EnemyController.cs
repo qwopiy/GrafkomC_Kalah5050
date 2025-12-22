@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public EnemyMovement enemyMovement;
     public Rigidbody2D rb;
     public Animator animator;
+    public AudioComponent ac;
 
     public bool isDying = false;
     void Start()
@@ -17,6 +18,7 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         enemyMovement = GetComponent<EnemyMovement>();
         animator = GetComponent<Animator>();
+        ac = GetComponent<AudioComponent>();
     }
 
     void Update()
@@ -43,6 +45,7 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        ac.AudioPlayOnce();
         health -= amount;
         StartCoroutine(GetHit());
         if (health <= 0)

@@ -7,7 +7,7 @@
             "id": "0334421c-447d-423c-9ee4-beff356a82dd",
             "actions": [
                 {
-                    "name": "W",
+                    "name": "MoveUp",
                     "type": "Button",
                     "id": "4ee56d22-afce-4d24-97df-cdc2e0a66bba",
                     "expectedControlType": "",
@@ -16,7 +16,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "A",
+                    "name": "MoveLeft",
                     "type": "Button",
                     "id": "8ce88d4b-2826-4738-ac25-8634f2a75b7d",
                     "expectedControlType": "",
@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "S",
+                    "name": "MoveDown",
                     "type": "Button",
                     "id": "8ce205f3-9c02-4947-9b0c-cb2ab0c5a65a",
                     "expectedControlType": "",
@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "D",
+                    "name": "MoveRight",
                     "type": "Button",
                     "id": "14d95d31-9f1a-44f6-9eb5-f3c7599a6b80",
                     "expectedControlType": "",
@@ -50,6 +50,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "StopGame",
+                    "type": "Button",
+                    "id": "e07c157b-cbd8-40a9-80f9-46f22031d4a8",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -60,7 +69,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "W",
+                    "action": "MoveUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "627916fc-a9e4-4b40-8851-f42e354a73ca",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -71,7 +91,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "A",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b6f17ed-0b0e-4fa2-83ec-ae61efe441c0",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -82,7 +113,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "S",
+                    "action": "MoveDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8b28bde-26a5-4e34-8d3a-f02cead5f432",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -93,7 +135,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "D",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6da5165-3048-4897-a4b3-1613c2c77075",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,6 +169,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2449da23-5a91-4762-8c12-806d79c21ce3",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StopGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
