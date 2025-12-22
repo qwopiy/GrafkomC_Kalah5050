@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
             EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
             if (enemy != null && !enemy.isDying)
             {
-                enemy.TakeDamage(damage); // contoh damage
+                enemy.TakeDamage(damage); // kena damage
                 GameStateManager.AddScore(damage); // tambah skor saat mengenai musuh
             }
             Destroy(gameObject); // hancurkan bullet setelah mengenai musuh

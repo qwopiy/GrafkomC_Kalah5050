@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,7 @@ public class GameStateManager : MonoBehaviour
     public static int enemyCounter = 0;
     public static int maxEnemies = 100;
 
+    public static int highScore = 0;
 
     public static void InitState()
     {
@@ -35,6 +37,13 @@ public class GameStateManager : MonoBehaviour
     public static void AddScore(float points)
     {
         score += (int)points;
+    }
+
+    public static void SetHighScore()
+    {
+       if (highScore < score) {
+            highScore = score;
+       }
     }
     public static void AddKill()
     {

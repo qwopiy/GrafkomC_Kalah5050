@@ -228,10 +228,16 @@ public class Player : MonoBehaviour
             StartCoroutine(IFrame());
             if (health <= 0)
             {
-                Debug.Log("Player Died");
-                //Destroy(gameObject);
-                GameStateManager.GoToMenu();
+                Die();
             }
         }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Player Died");
+        //Destroy(gameObject);
+        GameStateManager.SetHighScore();
+        GameStateManager.GoToMenu();
     }
 }
